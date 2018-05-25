@@ -15,14 +15,16 @@ namespace GitConsoleExtension
         private IntPtr _handler;
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
+			// If the user wants to open the terminal at the solution then OK.
+			// Otherwise let the Cli do whatever the user has set it up to do.
             var dte2 = (DTE2) Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof (SDTE));
-            if (!string.IsNullOrEmpty(dte2?.Solution?.FileName))
+            if (Config.Instance.StartInSolution && !string.IsNullOrEmpty(dte2?.Solution?.FileName))
             {
                 var dir = Path.GetDirectoryName(dte2.Solution.FileName);
                 if (dir != null) Directory.SetCurrentDirectory(dir);
             }
 
-            _process = new Process {StartInfo = new ProcessStartInfo(Config.Instance.MinttyPath,"--nodaemon") };
+			_process = new Process { StartInfo = new ProcessStartInfo(Config.Instance.CliPath.Trim(), Config.Instance.CliArgs.Trim())};
             _process.Start();
             _handler = IntPtr.Zero;
             if (_process.WaitForInputIdle())
@@ -36,7 +38,7 @@ namespace GitConsoleExtension
 
         protected override bool TabIntoCore(TraversalRequest request)
         {
-            int result = Win32.SetFocus(_handler);
+            var result = Win32.SetFocus(_handler);
             return result > 0;
         }
 
@@ -47,7 +49,7 @@ namespace GitConsoleExtension
 
         private void SetParent(IntPtr parentHwnd, IntPtr childHwnd)
         {
-            int style = Win32.GetWindowLong(childHwnd, Win32.GWL_STYLE);
+            var style = Win32.GetWindowLong(childHwnd, Win32.GWL_STYLE);
             style = style & ~((int)Win32.WS_CAPTION) & ~((int)Win32.WS_THICKFRAME);
 
             // Removes Caption bar and the sizing border

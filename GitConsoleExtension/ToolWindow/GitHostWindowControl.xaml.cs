@@ -28,7 +28,7 @@ namespace GitConsoleExtension
 
         private void GitHostWindowControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(Config.Instance.MinttyPath) || !File.Exists(Config.Instance.MinttyPath))
+            if (string.IsNullOrEmpty(Config.Instance.CliPath) || !File.Exists(Config.Instance.CliPath))
             {
                 InfoStackpanel.Visibility = Visibility.Visible;
             }
@@ -40,16 +40,11 @@ namespace GitConsoleExtension
 
         private void Select_Mintty_clicked(object sender, RoutedEventArgs e)
         {
-            var dialog=new OpenFileDialog();
-            dialog.FileName = "mintty.exe";
-            if (dialog.ShowDialog() == true)
-            {
-                if (dialog.SafeFileName == "mintty.exe")
-                {
-                    Config.Instance.MinttyPath = dialog.FileName;
-                    ConsoleHost.LoadMinttyHost();
-                }
-            }
+	        var dialog = new OpenFileDialog { FileName = ConfigModel.CliName, CheckPathExists = true, CheckFileExists = true};
+	        if (dialog.ShowDialog() != true)
+		        return;
+	        Config.Instance.CliPath = dialog.FileName;
+	        ConsoleHost.LoadMinttyHost();
         }
 
         public void Clean()

@@ -1,0 +1,12 @@
+C:\Users\jdillon\misc\\GitConsoleExtension.dll
+C:\Users\jdillon\misc\\GitConsoleExtension.pdb
+C:\Users\jdillon\misc\\Newtonsoft.Json.dll
+C:\Users\jdillon\misc\\GitConsoleExtension.pkgdef
+C:\Users\jdillon\misc\\gwindows_logo.png
+C:\Users\jdillon\misc\\extension.vsixmanifest
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\GitConsoleExtension.dll
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\GitConsoleExtension.pdb
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\Newtonsoft.Json.dll
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\GitConsoleExtension.pkgdef
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\gwindows_logo.png
+C:\Users\jdillon\misc\GitCommandLineVSExtension\\extension.vsixmanifest
