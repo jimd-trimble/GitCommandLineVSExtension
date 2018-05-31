@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\jdillon\misc\GitCommandLineVSExtension\GitConsoleExtension\obj\Debug\
+c:\Users\jdillon\misc\GitCommandLineVSExtension\GitConsoleExtension\obj\Debug\
 GitConsoleExtension
 none
 false
 DEBUG;TRACE
 
-21445039848
-31620789975
-81943305554
-89275733198
+2-2067133121
+3-1611101959
+12-1404445408
+89296661204
 ToolWindow\ConsoleHostControl.xaml;ToolWindow\GitHostWindowControl.xaml;
 
-False
+True
 
